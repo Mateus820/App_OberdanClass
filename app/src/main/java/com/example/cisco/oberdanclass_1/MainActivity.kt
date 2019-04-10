@@ -85,7 +85,5 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
     }//end OnCreate()
 }
