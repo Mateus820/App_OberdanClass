@@ -7,11 +7,11 @@
 
 
     <ImageView
-            android:layout_width="128dp"
-            android:layout_height="112dp"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
             android:layout_gravity="center"
             android:src="@mipmap/ic_launcher"
-            tools:srcCompat="@tools:sample/avatars[3]"
+            tools:srcCompat="@tools:sample/avatars[18]"
     />
 
     <TextView
@@ -29,10 +29,10 @@
             android:id="@+id/returnBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:text="Return"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="70dp"
             android:layout_marginLeft="70dp"
-            android:text="Return"
     />
 
 

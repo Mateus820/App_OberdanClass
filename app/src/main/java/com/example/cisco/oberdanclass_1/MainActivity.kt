@@ -7,14 +7,17 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.cisco.oberdanclass_1.extensions.toast
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    var people = mutableListOf(People("Mateus", "12345"))
+    var failedLogin = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        var people = mutableListOf(People("Mateus", "12345"))
 
 
         val loginInput = findViewById<EditText>(R.id.loginInput)
@@ -23,13 +26,11 @@ class MainActivity : AppCompatActivity() {
         val loginBtn = findViewById<Button>(R.id.loginBtn)
         val signUpBtn = findViewById<Button>(R.id.signUp)
 
-        var failedLogin = true
-
         loginBtn.setOnClickListener{
 
             for(person in people){
                 if(loginInput.text.toString().toUpperCase() == person.login.toUpperCase() && passwordInput.text.toString().toUpperCase() == person.password.toUpperCase()){
-                    Toast.makeText(this, "Login Ok, " + person.login, Toast.LENGTH_SHORT).show()
+                    toast("Login Ok, " + person.login)
 
                     loginInput.setText("")
                     passwordInput.setText("")
@@ -47,13 +48,12 @@ class MainActivity : AppCompatActivity() {
             if(failedLogin) {
                 loginInput.setText("")
                 passwordInput.setText("")
-                Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                toast("Login Failed")
             }
             else
                 failedLogin = true
 
-
-        }//end loginBtn.Click()
+        }
 
         signUpBtn.setOnClickListener {
 
@@ -75,15 +75,14 @@ class MainActivity : AppCompatActivity() {
 
             if(!accountExist){
                 people.add(People(loginInput.text.toString(), passwordInput.text.toString()))
-                Toast.makeText(this, "Account ${loginInput.text.toString()} created", Toast.LENGTH_SHORT).show()
+                toast("Account ${loginInput.text.toString()} created")
 
                 val intent = Intent(this, AccountActivity::class.java)
-
                 intent.putExtra("user_login", loginInput.text.toString())
-
                 startActivity(intent)
             }
-        }
-
+        }//end SignUp Btn
     }//end OnCreate()
 }
+
+data class People(var login:String, var password:String)
