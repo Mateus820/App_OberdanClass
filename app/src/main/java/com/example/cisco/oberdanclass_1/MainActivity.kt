@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     var people = mutableListOf(People("Mateus", "12345"))
     var failedLogin = true
+    var TAG = "Info"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
         val loginInput = findViewById<EditText>(R.id.loginInput)
         val passwordInput  = findViewById<EditText>(R.id.passwordInput)
@@ -38,10 +38,9 @@ class MainActivity : AppCompatActivity() {
                     failedLogin = false
 
                     val intent = Intent(this, AccountActivity::class.java)
-
                     intent.putExtra("user_login", person.login)
-
                     startActivity(intent)
+                    finish()
                 }
             }
 
@@ -80,6 +79,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, AccountActivity::class.java)
                 intent.putExtra("user_login", loginInput.text.toString())
                 startActivity(intent)
+                finish()
             }
         }//end SignUp Btn
     }//end OnCreate()

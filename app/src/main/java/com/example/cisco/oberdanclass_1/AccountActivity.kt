@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.cisco.oberdanclass_1.extensions.toast
 
 class AccountActivity : AppCompatActivity(){
 
@@ -23,7 +24,7 @@ class AccountActivity : AppCompatActivity(){
 
         returnBtn.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
-            Toast.makeText(this, "Thank you, " + userLoginText.text, Toast.LENGTH_SHORT).show()
+            toast("Thank you, " + userLoginText.text)
             startActivity(intent)
         }
     }
