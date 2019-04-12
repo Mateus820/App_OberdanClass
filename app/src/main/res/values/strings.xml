@@ -3,4 +3,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="signUp">Sign Up</string>
+    <string name="action_search">search</string>
+    <string name="action_refresh">refresh</string>
+    <string name="action_settings">settings</string>
 </resources>
