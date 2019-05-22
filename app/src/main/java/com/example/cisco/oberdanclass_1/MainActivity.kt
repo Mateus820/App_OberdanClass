@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     var failedLogin = true
     val TAG = "Info"
     val ACCOUNTS_KEY = "users_accounts"
-    var accountsPref = this.getSharedPreferences(ACCOUNTS_KEY, Context.MODE_PRIVATE)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +30,28 @@ class MainActivity : AppCompatActivity() {
         val signUpBtn = findViewById<Button>(R.id.signUp)
 
         loginBtn.setOnClickListener{
-            val editor = accountsPref!!.edit()
-            if(accountsPref.contains(loginInput.text.toString())){
-                getValueString(loginInput.text.toString())
+            for(person in people){
+                if(loginInput.text.toString().toUpperCase() == person.login.toUpperCase() && passwordInput.text.toString().toUpperCase() == person.password.toUpperCase()){
+                    toast("Login Ok, " + person.login)
+
+                    loginInput.setText("")
+                    passwordInput.setText("")
+
+                    failedLogin = false
+
+                    val intent = Intent(this, AccountActivity::class.java)
+                    intent.putExtra("user_login", person.login)
+                    startActivity(intent)
+                }
             }
+
+            if(failedLogin) {
+                loginInput.setText("")
+                passwordInput.setText("")
+                toast("Login Failed")
+            }
+            else
+                failedLogin = true
         }
 
         signUpBtn.setOnClickListener {
@@ -55,48 +72,8 @@ class MainActivity : AppCompatActivity() {
                 accountExist = true
             }
 
-            if(!accountExist){
-                people.add(People(loginInput.text.toString(), passwordInput.text.toString()))
-                toast("Account ${loginInput.text.toString()} created")
-
-                val intent = Intent(this, AccountActivity::class.java)
-                intent.putExtra("user_login", loginInput.text.toString())
-                startActivity(intent)
-                finish()
-            }
         }//end SignUp Btn
     }//end OnCreate()
+}
 
-        fun loginFinal(){
-            for(person in people){
-                if(loginInput.text.toString().toUpperCase() == person.login.toUpperCase() && passwordInput.text.toString().toUpperCase() == person.password.toUpperCase()){
-                    toast("Login Ok, " + person.login)
-
-                    loginInput.setText("")
-                    passwordInput.setText("")
-
-                    failedLogin = false
-
-                    val intent = Intent(this, AccountActivity::class.java)
-                    intent.putExtra("user_login", person.login)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-
-            if(failedLogin) {
-                loginInput.setText("")
-                passwordInput.setText("")
-                toast("Login Failed")
-            }
-            else
-                failedLogin = true
-
-        }
-
-        fun getValueString(KEY_NAME: String): String? {
-            return accountsPref.getString(KEY_NAME, null)
-        }
-    }
-
-data class People(var login:String, var password:String)
+data class People(var login: String, var password: String)
