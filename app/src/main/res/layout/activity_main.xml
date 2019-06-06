@@ -15,8 +15,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:layout_marginTop="25dp"
-            android:layout_gravity="center"
-    />
+            android:layout_gravity="center"/>
 
     <TextView
             android:id="@+id/loginText"
@@ -32,6 +31,7 @@
     <EditText
             android:id="@+id/loginInput"
             android:hint="example123"
+            android:inputType="textPersonName"
             android:textSize="16sp"
             android:singleLine="true"
             android:layout_width="match_parent"
