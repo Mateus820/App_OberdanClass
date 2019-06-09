@@ -14,56 +14,29 @@
             android:src="@drawable/user_profile"
             android:layout_width="130dp"
             android:layout_height="130dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="60dp"
             android:layout_gravity="center"/>
-
-    <TextView
-            android:id="@+id/loginText"
-            android:text="@string/login"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-    />
 
     <EditText
             android:id="@+id/loginInput"
-            android:hint="example123"
+            style="@style/EnterTextFont"
+            android:hint="Login"
             android:inputType="textPersonName"
-            android:textSize="16sp"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:maxLength="40"
-            android:maxLines="1"
-    />
-
-    <TextView
-            android:id="@+id/passwordText"
-            android:text="@string/password"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
     />
 
     <EditText
             android:id="@+id/passwordInput"
-            android:hint="Type your password..."
+            style="@style/EnterTextFont"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:textSize="16sp"
-            android:singleLine="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:maxLength="40"
-            android:maxLines="1"
     />
 
     <Button
